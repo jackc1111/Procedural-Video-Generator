@@ -45,9 +45,9 @@ class TextMethodsDemo(Scene):
         self.play(Write(math_title), run_time=1)
 
         # LaTeX formulas
-        formula1 = Tex(r"E = mc^2", font_size=48, color=YELLOW)
-        formula2 = Tex(r"\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}", font_size=36, color=ORANGE)
-        formula3 = Tex(r"\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}", font_size=36, color=PURPLE)
+        formula1 = MathTex(r"E = mc^2", font_size=48, color=YELLOW)
+        formula2 = MathTex(r"\int_0^\infty e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}", font_size=36, color=ORANGE)
+        formula3 = MathTex(r"\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}", font_size=36, color=PURPLE)
 
         formulas = VGroup(formula1, formula2, formula3).arrange(DOWN, buff=0.8)
         formulas.next_to(math_title, DOWN, buff=1)
@@ -137,5 +137,3 @@ class TextMethodsDemo(Scene):
         final_text = Text("Text Methods Demo Complete!", font_size=50, color=YELLOW, weight=BOLD)
         self.play(Write(final_text), run_time=2)
         self.play(Indicate(final_text), run_time=1)
-        self.wait(2)</content>
-</xai:function_call
