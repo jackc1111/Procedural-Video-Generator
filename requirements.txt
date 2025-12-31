@@ -1,0 +1,5 @@
+manim
+numpy
+pillow
+matplotlib
+pyyaml

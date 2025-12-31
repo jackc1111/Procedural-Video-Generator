@@ -1,0 +1,10 @@
+.venv/
+output/
+__pycache__/
+*.mp4
+*.png
+.DS_Store
+.vscode/
+.agent/
+media/
+*.log
