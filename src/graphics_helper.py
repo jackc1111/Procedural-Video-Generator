@@ -40,17 +40,28 @@ class GraphicsHelper:
         return VGroup(bar_outline, bar_fill)
 
     @staticmethod
-    def create_glow(mobject, color=None, scale=1.2, opacity=0.3):
+    def create_glow(mobject, color=None, scale=None, opacity=0.3):
         """
-        Creates a glowing halo effect around a mobject.
-        Works best for vector mobjects.
+        Creates a glowing halo effect around a mobject using Stroke Width.
+        FIXED: Removed .scale() to prevent text character misalignment.
         """
         try:
             glow_color = color if color is not None else mobject.get_color()
-            glow_group = VGroup(*[
-                mobject.copy().set_stroke(glow_color, width=i*2, opacity=opacity/(i+1)).scale(1 + 0.05*i)
-                for i in range(1, 6)
-            ])
+            glow_group = VGroup()
+            
+            # 5 шарів сяйва
+            for i in range(1, 6):
+                layer = mobject.copy()
+                
+                # Важливо: прибираємо заливку, залишаємо тільки контур
+                layer.set_fill(opacity=0)
+                
+                # Сяйво створюється товстим напівпрозорим контуром
+                # width збільшується з кожним шаром, імітуючи розсіювання світла
+                layer.set_stroke(glow_color, width=i * 5, opacity=opacity / i)
+                
+                glow_group.add(layer)
+                
             return glow_group
         except Exception:
             return VGroup()
@@ -99,14 +110,8 @@ class GraphicsHelper:
     def create_masked_image(image_mobject, mask_shape):
         """
         Places an image inside a shape (clipping/masking).
-        Note: In Manim Community, this is achieved by using the shape as a container 
-        or via specific Mobject methods.
         """
-        # Simple implementation: center image on shape and return VGroup
-        # In a real shader-based approach we would use specialized classes
-        # but for standard PVG, we can use the Group approach with specific ordering.
         image_mobject.move_to(mask_shape.get_center())
-        # We can use the shape to 'frame' the image
         frame = mask_shape.copy().set_fill(opacity=0).set_stroke(width=5, color=WHITE)
         return Group(image_mobject, frame)
 
@@ -126,20 +131,3 @@ class GraphicsHelper:
         """
         sphere = Sphere(radius=radius, fill_color=fill_color, fill_opacity=fill_opacity)
         return sphere
-
-class InfoGraphic(ThreeDScene):
-    """
-    Base class for scenes that require standardized data visualization.
-    Now supports 3D by default.
-    """
-    def create_bar_chart(self, labels, values, title=""):
-        chart = BarChart(
-            values=values,
-            label_y_axis=True,
-            y_range=[0, max(values) * 1.2, 10],
-            x_length=10,
-            y_length=6,
-            axis_config={"font_size": 24},
-        )
-        # Manim Community BarChart labels are handled differently, but this is a stub
-        return chart
