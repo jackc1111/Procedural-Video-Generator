@@ -2,7 +2,7 @@ from manim import config, Scene
 import os
 
 class Renderer:
-    def __init__(self, quality="high_quality", output_directory="output", snapshot=False):
+    def __init__(self, quality="high_quality", output_directory="media", snapshot=False):
         self.output_directory = output_directory
         self.quality = quality
         self.snapshot = snapshot
@@ -14,12 +14,13 @@ class Renderer:
         """
         config.media_dir = self.output_directory
         config.images_dir = os.path.join(self.output_directory, "images")
-        
+        config.video_dir = os.path.join(self.output_directory, "videos")
+
         # Snapshot mode (saves last frame as PNG)
         if self.snapshot:
             config.save_last_frame = True
             config.format = "png"
-        
+
         # Quality presets
         if self.quality == "low":
             config.quality = "low_quality"

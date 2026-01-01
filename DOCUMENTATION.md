@@ -23,7 +23,7 @@ python src/generator.py [path_to_script.py] [ClassName] --quality [low|medium|hi
 - **path_to_script.py**: Шлях до вашого Python-файлу зі сценою.
 - **ClassName**: Назва класу (нащадок `Scene`), який потрібно відрендерити.
 - **--quality**: Якість відео (по замовчуванню `high` - 1080p). Доступні: `low`, `medium`, `high`, `4k`.
-- **--output**: Папка для результатів (по замовчуванню `output`).
+- **--output**: Папка для результатів (по замовчуванню `media`).
 - **--snapshot**: Прапорець для збереження лише останнього кадру як PNG замість рендерингу відео.
 
 ---
