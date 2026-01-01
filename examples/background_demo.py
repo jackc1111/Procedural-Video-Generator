@@ -166,4 +166,3 @@ class BackgroundDemo(Scene):
         self.play(Write(final_text), run_time=2)
         self.play(Indicate(final_text), run_time=1)
         self.wait(2)
-</xai:function_call

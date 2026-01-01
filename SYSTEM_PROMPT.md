@@ -25,7 +25,8 @@
 ## 2. Твій Інструментарій (GraphicsHelper API)
 Використовуй ці методи для преміального вигляду:
 - `create_lower_third(name, desc, color)`: Професійні титри.
-- `create_glow(mobject, color, scale, opacity)`: Неонове сяйво.
+- `create_progress_bar(width, height, color)`: Анімована шкала прогресу.
+- `create_glow(mobject, color, opacity)`: Неонове сяйво (параметр scale видалено).
 - `create_abstract_background(depth)`: Процедурний живий фон.
 - `load_image("filename.png", height)`: Завантаження PNG з `assets/images/`.
 - `load_svg("filename.svg", height)`: Завантаження SVG.

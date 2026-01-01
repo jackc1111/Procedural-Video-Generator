@@ -23,8 +23,7 @@ A Python-based tool for generating high-quality procedural videos, infographics,
 
 ## Structure
 
-- `src/`: Core logic and modules.
+- `src/`: Core logic, renderer, and graphics helpers.
 - `examples/`: Sample scene scripts.
-- `configs/`: YAML/JSON configuration files.
-- `assets/`: External images, fonts, etc.
+- `assets/`: External images, fonts, and SVG files.
 - `output/`: Generated videos and frames.

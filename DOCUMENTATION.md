@@ -22,8 +22,9 @@ python src/generator.py [path_to_script.py] [ClassName] --quality [low|medium|hi
 ### Параметри:
 - **path_to_script.py**: Шлях до вашого Python-файлу зі сценою.
 - **ClassName**: Назва класу (нащадок `Scene`), який потрібно відрендерити.
-- **--quality**: Якість відео (по замовчуванню `high` - 1080p).
+- **--quality**: Якість відео (по замовчуванню `high` - 1080p). Доступні: `low`, `medium`, `high`, `4k`.
 - **--output**: Папка для результатів (по замовчуванню `output`).
+- **--snapshot**: Прапорець для збереження лише останнього кадру як PNG замість рендерингу відео.
 
 ---
 
@@ -36,8 +37,13 @@ python src/generator.py [path_to_script.py] [ClassName] --quality [low|medium|hi
   - *Стиль*: Напівпрозорий закруглений прямокутник ("glassmorphism").
 
 ### 3.2 Візуальні ефекти (VFX)
-- **`create_glow(mobject, color=None, scale=1.2, opacity=0.3)`**
+- **`create_progress_bar(width=10, height=0.2, color=BLUE_E)`**
+  - Створює анімовану шкалу прогресу.
+  - *Використання*: Можна анімувати заповнення через зміну ширини або трансформацію.
+
+- **`create_glow(mobject, color=None, opacity=0.3)`**
   - Додає багатошарове неонове сяйво навколо будь-якого векторного об'єкта (текст, коло, логотип).
+  - *Примітка*: Параметр `scale` було видалено для забезпечення стабільності тексту.
   - *Порада*: Найкраще виглядає на темному фоні.
 
 - **`create_abstract_background(depth=3)`**
