@@ -1,0 +1,8 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/volodymyr/4/output/videos/partial_movie_files/AdvancedMediaDemo/1584795214_232207713_3320143809.mp4'
+file 'file:/home/volodymyr/4/output/videos/partial_movie_files/AdvancedMediaDemo/4072820271_1145292590_2441116238.mp4'
+file 'file:/home/volodymyr/4/output/videos/partial_movie_files/AdvancedMediaDemo/4072820271_337861949_1003185307.mp4'
+file 'file:/home/volodymyr/4/output/videos/partial_movie_files/AdvancedMediaDemo/4072820271_3581518015_2901555221.mp4'
+file 'file:/home/volodymyr/4/output/videos/partial_movie_files/AdvancedMediaDemo/4072820271_2553965316_3430234712.mp4'
+file 'file:/home/volodymyr/4/output/videos/partial_movie_files/AdvancedMediaDemo/4072820271_3363388834_4042617579.mp4'
+file 'file:/home/volodymyr/4/output/videos/partial_movie_files/AdvancedMediaDemo/4072820271_18644956_2245448732.mp4'
