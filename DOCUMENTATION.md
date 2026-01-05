@@ -16,7 +16,7 @@ PVG побудований як обгортка над двигуном **Manim
 Основний інструмент запуску — `src/generator.py`.
 
 ```bash
-python src/generator.py [path_to_script.py] [ClassName] --quality [low|medium|high|4k]
+python src/generator.py [path_to_script.py] [ClassName] --quality [low|medium|high|4k] [--studio-format]
 ```
 
 ### Параметри:
@@ -25,6 +25,7 @@ python src/generator.py [path_to_script.py] [ClassName] --quality [low|medium|hi
 - **--quality**: Якість відео (по замовчуванню `high` - 1080p). Доступні: `low`, `medium`, `high`, `4k`.
 - **--output**: Папка для результатів (по замовчуванню `media`).
 - **--snapshot**: Прапорець для збереження лише останнього кадру як PNG замість рендерингу відео.
+- **--studio-format**: Створює додаткову копію відео у студійному форматі (H.264 Main Profile, рівень 4.0, AAC аудіо 128k) з суфіксом `_studio.mp4`.
 
 ---
 

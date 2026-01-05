@@ -1,12 +1,47 @@
 from manim import config, Scene
 import os
+import subprocess
 
 class Renderer:
-    def __init__(self, quality="high_quality", output_directory="media", snapshot=False):
+    def __init__(self, quality="high_quality", output_directory="media", snapshot=False, studio_format=False):
         self.output_directory = output_directory
         self.quality = quality
         self.snapshot = snapshot
+        self.studio_format = studio_format
         self._setup_config()
+
+    def _transcode_to_studio_format(self, scene_class):
+        """
+        Transcodes the rendered video to studio format using FFmpeg.
+        """
+        video_file = os.path.join(config.video_dir, f"{scene_class.__name__}.mp4")
+        studio_file = os.path.join(config.video_dir, f"{scene_class.__name__}_studio.mp4")
+
+        if not os.path.exists(video_file):
+            print(f"Warning: Original video file {video_file} not found. Skipping studio format conversion.")
+            return
+
+        command = [
+            "ffmpeg",
+            "-i", video_file,
+            "-c:v", "libx264",
+            "-profile:v", "main",
+            "-level:v", "4.0",
+            "-pix_fmt", "yuv420p",
+            "-c:a", "aac",
+            "-b:a", "128k",
+            "-y",  # Overwrite output file
+            studio_file
+        ]
+
+        try:
+            result = subprocess.run(command, check=True, capture_output=True, text=True)
+            print(f"Studio format conversion completed. File saved as {studio_file}")
+        except subprocess.CalledProcessError as e:
+            print(f"Error during FFmpeg transcode: {e}")
+            print(f"FFmpeg stderr: {e.stderr}")
+        except FileNotFoundError:
+            print("Error: FFmpeg not found. Please install FFmpeg to use studio format conversion.")
 
     def _setup_config(self):
         """
@@ -41,3 +76,5 @@ class Renderer:
             print(f"Snapshot completed. Image saved in {config.images_dir}")
         else:
             print(f"Render completed. Video saved in {config.video_dir}")
+            if self.studio_format:
+                self._transcode_to_studio_format(scene_class)
